@@ -1,4 +1,4 @@
-function [RHO, RHO_temp]=RhoBinning_Data(dataStructure,Size_Bins,N_bins,Size_Ign,Density)
+function [RHO, RHO_temp]=RhoBinning_Data(dataStructure,Size_Bins,N_bins,Size_Ign,Density,N_repeats)
 
 %% Slice dataStruct regarding type of synapse
 dataStruct_spine = dataStructure(strcmp({dataStructure.Synapse}, 'spines'));
@@ -10,7 +10,7 @@ Inhib = struct('Distances',cell(Nbranches,1), 'Sizes', [], 'BranchSize', [], 'De
 Spines = struct('Distances',cell(Nbranches,1), 'Sizes',[], 'Dens_Bins', [], ...
  'Sum_Bin', []);
 %% Populate structs
-N_repeats=1000;
+%N_repeats=1000;
 RHO_temp=zeros(N_repeats,1);
 RHO=zeros(1,3);
 for r=1:N_repeats

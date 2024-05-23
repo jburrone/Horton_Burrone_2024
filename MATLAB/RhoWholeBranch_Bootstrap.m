@@ -5,8 +5,8 @@
 % MRC Center for NeuroDevelopmental Disorders
 % IoPPN, King's College London
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-function [Summary,Distribution]=RhoWholeBranch_Bootstrap(dataStruct,Density)
-%%%% Usage [Summary,Distribution]=RhoWholeBranch_Bootstrap(dataStruct,0);
+function [Summary,Distribution]=RhoWholeBranch_Bootstrap(dataStruct,Density,N_repeats)
+%%%% Usage [Summary,Distribution]=RhoWholeBranch_Bootstrap(dataStruct,0,1000);
 % DataStruct is obtained using the LoadData function
 % Density decides if you want to run the analysis using density (1) or 
 % Cumulative Size (0) as a synapse metric
@@ -16,7 +16,7 @@ function [Summary,Distribution]=RhoWholeBranch_Bootstrap(dataStruct,Density)
 % random re-sampling of the branches (always keeping the total branch
 % number constant. The value reported is the Rho value of the Spearmann
 % Rank Correlation between inhibitory and excitatory synapse metrics
-
+% Control the number of resampling using the N_repeats variable
 %% Slice dataStruct regarding type of synapse
 dataStruct_spine = dataStruct(strcmp({dataStruct.Synapse}, 'spines'));
 dataStruct_shaft = dataStruct(strcmp({dataStruct.Synapse}, 'shaft'));
@@ -26,7 +26,7 @@ Inhib = struct('Distances',[], 'Sizes', [], 'Totdensity', [], 'TotSum', []);
     
 Spines = struct('Distances',[], 'Sizes',[], 'Totdensity', [],'TotSum', []);
     
-N_repeats=10000;
+%N_repeats=10000;
 Distribution=zeros(N_repeats,1);
 Summary=zeros(1,3);
 for n = 1:N_repeats

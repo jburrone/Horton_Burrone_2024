@@ -23,13 +23,13 @@
 % generated branch
 % Requires Auxiliary functions RhoBinCalc_SimBr, GenerateSimBranches
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-function [Summary,Distribution]=Main_RhoBin_SimBr(age,Density)
+function [Summary,Distribution]=Main_RhoBin_SimBr(age,Density,N_Repeats)
 %%%% Usage [Summary,Distribution]=Main_RhoBin_SimBr(7,0);
 % age represents the version of the simulation you want to run
 % Matched to the characteristics of 7,10,14,21 and EM (use age=22) datasets
 % Density decides if you want to run the analysis using density (1) or 
 % Cumulative Size (0) as a synapse metric
-N_Repeats=1000;
+%N_Repeats=1000;
 N_bins=20;
 BinSize=[5 10 15 20 25];
 N_Sizes=size(BinSize,2);
@@ -38,7 +38,7 @@ Distribution=zeros(N_Repeats,N_Sizes);
 for s=1:N_Sizes
     Size_Bins=BinSize(s);
     Summary(s,1) = Size_Bins;
-    [Summary(s,2:4),Distribution(:,s)]  = RhoBinCalc_SimBr(age,Size_Bins,N_bins,Density);
+    [Summary(s,2:4),Distribution(:,s)]  = RhoBinCalc_SimBr(age,Size_Bins,N_bins,Density,N_Repeats);
 end
 
 end

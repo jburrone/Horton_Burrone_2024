@@ -18,10 +18,10 @@
 % generated start bin regions throuought the dendrite
 % Requires Auxiliary functions RhoBinning_Data, LoadData
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-function [Summary,Distribution]=Main_RhoBin_Data(dataStruct,Density)
+function [Summary,Distribution]=Main_RhoBin_Data(dataStruct,Density,N_repeats)
 
 
-N_repeats=1000;
+%N_repeats=1000;
 BinSize=[5 10 15 20 25];
 N_Sizes=size(BinSize,2);
 Summary=zeros(N_Sizes,4);
@@ -29,7 +29,7 @@ Distribution=zeros(N_repeats,N_Sizes);
 for s=1:N_Sizes
     Size_Bins=BinSize(s);
     Summary(s,1) = Size_Bins;
-    [Summary(s,2:4),Distribution(:,s)]  = RhoBinning_Data(dataStruct,Size_Bins,10,0,Density);
+    [Summary(s,2:4),Distribution(:,s)]  = RhoBinning_Data(dataStruct,Size_Bins,10,0,Density,N_repeats);
 end
 
 end

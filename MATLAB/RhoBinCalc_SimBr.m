@@ -12,9 +12,9 @@
 %%%% [Results,RHO]=RhoBinCalc_SimBr(age,Size_Bins,N_bins,Density);
 %% Designed to be called from Main_RhoBin_SimBr fuction
 %%%%%%%%% Requires GenerateSimBranches function
-function [Results,RHO]=RhoBinCalc_SimBr(age,Size_Bins,N_bins,Density)
+function [Results,RHO]=RhoBinCalc_SimBr(age,Size_Bins,N_bins,Density,N_Repeats_1)
 
-N_Repeats_1=1000;
+%N_Repeats_1=1000;
 N_Repeats_2=50;
 Results=zeros(1,3);
 RHO = zeros(N_Repeats_1,1);
